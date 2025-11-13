@@ -1,12 +1,15 @@
-const TodoList = ({todos}) => {
+const TodoList = ({todos, delToDo}) => {
   return (
-    <ul className="text-center mt-10">
+    <div className="mt-10 flex flex-col items-center w-full">
         {todos.map((item)=>(
-          <li className="list-none mt-3 text-2xl" key={item.id}>
-            {item.text}
-          </li>
+          <div className="flex justify-between items-center w-1/3 bg-white shadow-md border border-gray-200 rounded-xl px-5 py-3 mt-3 transition hover:shadow-lg" key={item.id}>
+            <span className="text-xl font-medium text-gray-800">
+              {item.text}
+            </span>
+            <button className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg transition" onClick={()=>delToDo(item.id)}>Delete</button>
+          </div>
         ))}
-    </ul>
+    </div>
   )
 }
 
